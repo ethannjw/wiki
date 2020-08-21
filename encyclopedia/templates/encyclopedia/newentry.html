@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Wiki Entry
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+      <h2> {{ error }}</h2>
+    {% endif %}
+    <h1>Create New Wiki Entry</h1>
+    <form action="{% url 'new_entry' %}" method="POST">
+      {% csrf_token %}
+      <h1>Title: </h1>
+      <br>
+      <input class="new_title" type="text" name="new_title" placeholder="Enter title of new page">
+      <h1>Content: </h1>
+      <textarea class="new_content" id="new_content" name="new_content" rows="4" cols="50" placeholder="Enter content of new page"></textarea>
+      <br>
+      <input type="submit" value="Save Form">
+  </form>
+{% endblock %}
